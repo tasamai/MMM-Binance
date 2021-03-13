@@ -1,0 +1,27 @@
+{
+  "name": "mmm-binance",
+  "version": "1.0.0",
+  "description": "Magic Mirror module to monitor portfolio on binance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tasamai/MMM-Binance.git"
+  },
+  "keywords": [
+    "crypto",
+    "binance",
+    "magic",
+    "mirror",
+    "binance",
+    "portfolio"
+  ],
+  "author": "Thomas A. Samai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tasamai/MMM-Binance/issues"
+  },
+  "homepage": "https://github.com/tasamai/MMM-Binance#readme"
+}
