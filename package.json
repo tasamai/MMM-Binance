@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/tasamai/MMM-Binance/issues"
   },
-  "homepage": "https://github.com/tasamai/MMM-Binance#readme"
+  "homepage": "https://github.com/tasamai/MMM-Binance#readme",
+  "dependencies": {
+    "node-binance-api": "^0.12.5"
+  }
 }
