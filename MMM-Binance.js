@@ -9,7 +9,7 @@ Module.register("mmm-test", {
 		this.count = 0
 		var timer = setInterval(()=>{
 		  this.updateDom()
-		  this.count++
+		  count++
 		}, 1000)
 	  },
 
