@@ -21,7 +21,7 @@ module.exports = NodeHelper.create({
     
         var keys = {
             'PUBLICKEY' : config.API_TOKEN,
-            'SECRETKEY' : config.API_TOKEN
+            'SECRETKEY' : config.SECRET_API_KEY
         }
         var signature = CryptoJS.HmacSHA256(QueryString ,keys['SECRETKEY']).toString(CryptoJS.enc.Hex);        
         url = burl + endPoint + '?' + QueryString + '&signature=' + signature;
