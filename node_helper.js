@@ -1,7 +1,7 @@
 /* Magic Mirror
- * Module: MMM-UFO
+ * Module: MMM-Binance
  *
- * By Mykle1
+ * By Thomas Samai
  *
  */
 const NodeHelper = require('node_helper');
