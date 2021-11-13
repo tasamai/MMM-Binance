@@ -16,7 +16,7 @@ Installing this module is quite simple
 open terminal and get your working directory to point to you magicmirror modules folder, Follow the steps below to do so...
 ```javascript
 cd ~/MagicMirror/modules
-git clone https://github.com/mlbonniec/MMM-Coinbase.git
+git clone https://github.com/tasamai/MMM-Binance.git
 cd MMM-Coinbase
 npm install
 ```
