@@ -1,49 +1,43 @@
 /* Magic Mirror
- * Module: MMM-Binance
+ * Node Helper: MMM-Binance
  *
- * By Thomas Samai
+ * By: Thomas Samai
  *
  */
-const NodeHelper = require('node_helper');
-const request = require('request');
-const CryptoJS = require("crypto-js");
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var url
+var NodeHelper = require("node_helper");
 
+const Binance = require('node-binance-api');
+const binance = new Binance().options({
+APIKEY: config.API_TOKEN,
+APISECRET: config.SECRET_API_KEY
+});
 
 module.exports = NodeHelper.create({
 
     start: function() {
         console.log("Starting node_helper for: " + this.name);
-        const burl = 'https://api.binance.com';
-        const endPoint = '/api/v3/account';
-        var QueryString = 'recvWindow=20000&timestamp=' + Date.now();
-    
-        var keys = {
-            'PUBLICKEY' : config.API_TOKEN,
-            'SECRETKEY' : config.SECRET_API_KEY
-        }
-        var signature = CryptoJS.HmacSHA256(QueryString ,keys['SECRETKEY']).toString(CryptoJS.enc.Hex);        
-        url = burl + endPoint + '?' + QueryString + '&signature=' + signature;
+        var self = this;
+		this.getData();
     },
 
-    getData: function(url) {
-        var ourRequest = new XMLHttpRequest();
-
-        ourRequest.open('GET', url, true);
-        ourRequest.setRequestHeader('X-MBX-APIKEY',keys['PUBLICKEY']);
-        
-        ourRequest.onload = function(){
-            result = JSON.parse(ourRequest.responseText);
-            this.sendSocketNotification('DATA_RESULT', result);
-            console.log(ourData);
-        }
-        ourRequest.send();        
-    },
+    getData: function() {
+        var self = this
+		let myPromise = new Promise(function(myResolve, myReject) {
+            binance.balance(function(error, balances) {
+                myResolve(balances);
+            });
+        });
+			myPromise.then(
+                function(value) {
+                    balanceData = value;
+                },
+                function(error) {myReject(error)}       
+                )
+            },
 
     socketNotificationReceived: function(notification, payload) {
-        if (notification === 'GET_DATA') {
-            this.getData(payload);
+        if (notification === 'open-socket') {
+            this.sendSocketNotification("balance-payload", balanceData)
         }
     }
 });
