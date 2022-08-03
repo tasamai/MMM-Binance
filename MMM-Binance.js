@@ -24,36 +24,36 @@ Module.register("MMM-Binance", {
 		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
 
-		//header
+		//header for element
 		var header = document.createElement("header");
 		header.classList.add("xsmall", "bright", "light", "header");
 		header.innerHTML = ("Binance Spot-Wallet")
 		wrapper.appendChild(header);
 
-		//Table
-		var tablewrapper = document.createElement("table");
+		//Create table
+		var tableWrapper = document.createElement("table");
 
 		for (const [key , value] of Object.entries(this.dataNotification)){
 			if (Object.values(value)[0] > 0){
-				var coinrow = document.createElement("tr");
-				coinrow.className = "tablerow";
+				var coinRow = document.createElement("tr");
+				coinRow.className = "tablerow";
 
-				var coinsymbol = document.createElement("td");
-				coinsymbol.colSpan = "3";
-				coinsymbol.innerHTML = key;
-				coinsymbol.className = "asset";
+				var coinSymbol = document.createElement("td");
+				coinSymbol.colSpan = "3";
+				coinSymbol.innerHTML = key;
+				coinSymbol.className = "asset";
 				
-				var coinamount = document.createElement("td");
-				coinamount.colSpan = "3";
-				coinamount.innerHTML = Object.values(value)[0];
-				coinamount.className = "symbol";
+				var coinAmount = document.createElement("td");
+				coinAmount.colSpan = "3";
+				coinAmount.innerHTML = Object.values(value)[0];
+				coinAmount.className = "symbol";
 
-				coinrow.appendChild(coinsymbol);
-				coinrow.appendChild(coinamount);
-				tablewrapper.appendChild(coinrow);
+				coinRow.appendChild(coinSymbol);
+				coinRow.appendChild(coinAmount);
+				tableWrapper.appendChild(coinRow);
 			}
 		}
-		wrapper.appendChild(tablewrapper);
+		wrapper.appendChild(tableWrapper);
 		return wrapper;
 	},
 
