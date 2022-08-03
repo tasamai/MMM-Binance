@@ -24,7 +24,7 @@ Module.register("MMM-Binance", {
 		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
 
-		//header
+		//header for element
 		var header = document.createElement("header");
 		header.classList.add("xsmall", "bright", "light", "header");
 		header.innerHTML = ("Binance Spot-Wallet")
